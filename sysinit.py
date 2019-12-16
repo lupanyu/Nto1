@@ -16,7 +16,7 @@ class Client(object):
     
     def file(self,local,remote,ip,sysver,hostname):
         import jinja2
-        with open('/home/work/sys_init/moudle') as f:
+        with open('sys_init/moudle') as f:
             data=jinja2.Template(f.read())
         with open(local,'w') as l:
             l.write(data.render(controlip=ip,sysversion=sysver,hostname=hostname))
@@ -43,10 +43,10 @@ def main(filename):
     for client in data:
         '''hostname,ip,mima,sysversion,networkstyle'''
         print client
-        ip = '123.56.193.109' if client[4]=='public' else '10.46.166.54'
+        ip = 'xxxxx' if client[4]=='public' else 'xxxxx'
         a=Client(client[1],client[2])       
-        a.file('/home/work/sys_init/temp.sh','/root/temp.sh',ip,client[3],client[0])
-        a.cmd('bash /root/temp.sh &')
+        a.file('sys_init/temp.sh','/tmp/temp.sh',ip,client[3],client[0])
+        a.cmd('bash /tmp/temp.sh &')
         a.close()
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
